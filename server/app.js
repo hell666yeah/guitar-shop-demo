@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}) );
 
 
 app.listen(3000, function () {
-  console.log('Grocery Web app service listening on port 3000!')
+  console.log('Simpsons Guitar Store Web app service listening on port 3000!')
 })
 
 app.get('/', function (req, res) {
@@ -27,13 +27,31 @@ app.post('/allproducts', function (req, res) {
 })
 
 app.post('/guitars', function (req, res) {
-    res.json(products);
+    let filteredProducts = [];
+    productsList.forEach(product => {
+        if (product.type === 'acoustic' || product.type === 'electric') {
+            filteredProducts.push(product);
+        }
+    });
+    res.json(filteredProducts);
 })
 
 app.post('/straps', function (req, res) {
-    res.json(true);
+  let filteredProducts = [];
+  productsList.forEach(product => {
+      if (product.type === 'straps') {
+          filteredProducts.push(product);
+      }
+  });
+  res.json(filteredProducts);
 })
 
 app.post('/picks', function (req, res) {
-    res.json(true);
+  let filteredProducts = [];
+  productsList.forEach(product => {
+      if (product.type === 'pick') {
+          filteredProducts.push(product);
+      }
+  });
+  res.json(filteredProducts);
 })

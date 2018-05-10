@@ -71,7 +71,7 @@ let products = [{
 {
   name: 'Penny Creek Style 1',
   brand: 'Penny Creek',
-  type: 'strap',
+  type: 'straps',
   serialNumber: '8',
   strings: 'none',
   price: '$10',
@@ -81,7 +81,7 @@ let products = [{
 {
   name: 'Rocky Strap',
   brand: 'Ibanez',
-  type: 'strap',
+  type: 'straps',
   serialNumber: '9',
   strings: 'none',
   price: '$20',
@@ -91,7 +91,7 @@ let products = [{
 {
   name: 'Santa Strap',
   brand: 'Santanio',
-  type: 'strap',
+  type: 'straps',
   serialNumber: '10',
   strings: 'none',
   price: '$7',
@@ -101,7 +101,7 @@ let products = [{
 {
   name: 'Test Strap',
   brand: 'Santanio',
-  type: 'strap',
+  type: 'straps',
   serialNumber: '11',
   strings: 'none',
   price: '$7',
@@ -111,7 +111,7 @@ let products = [{
 {
   name: 'Testing Strap',
   brand: 'Santanio',
-  type: 'strap',
+  type: 'straps',
   serialNumber: '12',
   strings: 'none',
   price: '$7',
@@ -121,7 +121,7 @@ let products = [{
 {
   name: 'Furtedos Pick Pack of 3',
   brand: 'Furtedos',
-  type: 'pick',
+  type: 'picks',
   subCategory: 'plastic',
   serialNumber: '13',
   strings: 'none',
@@ -132,7 +132,7 @@ let products = [{
 {
   name: 'Furtedos Pick Pack of 5',
   brand: 'Furtedos',
-  type: 'pick',
+  type: 'picks',
   subCategory: 'wooden',
   serialNumber: '14',
   strings: 'none',
