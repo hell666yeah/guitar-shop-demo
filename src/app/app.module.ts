@@ -4,18 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GuitarListingComponent } from './guitar-listing/guitar-listing.component';
+import { ProductListingComponent } from './product-listing/product-listing.component';
 import { StrapsListingComponent } from './straps-listing/straps-listing.component';
 import { PicksListingComponent } from './picks-listing/picks-listing.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { GuitarListingComponent } from './guitar-listing/guitar-listing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GuitarListingComponent,
+    ProductListingComponent,
     StrapsListingComponent,
     PicksListingComponent,
-    NavigationComponent
+    NavigationComponent,
+    GuitarListingComponent
   ],
   imports: [
     BrowserModule,
