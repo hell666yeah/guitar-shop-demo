@@ -1,0 +1,28 @@
+<div>
+    <p><button> Cart </button></p>
+</div>
+
+<p>
+    All Guitars
+</p>
+<p>Filter:
+  <select (change)="filterChanged($event.target.value)">
+    <option *ngFor="let filter of filters">{{filter}}</option>
+  </select>
+</p>
+<div>
+    <div *ngFor="let product of filteredProductsList">
+        <div>
+            <p><strong>Name: </strong> {{product.name}}</p>
+            <p><strong>Type: </strong> {{product.type}}</p>
+            <p><strong>Brand: </strong> {{product.brand}}</p>
+            <p><strong>Number of Strings: </strong> {{product.strings}}</p>
+            <p><strong>Price: </strong> {{product.price}}</p>
+            <p><strong>Number of pieces available: </strong> {{product.count}}</p>
+        </div>
+        <div>
+            <button>Add to cart</button>
+        </div>
+        <hr>
+    </div>
+</div>
