@@ -7,19 +7,27 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "grunt scss:production && ng build --aot --prod"
+  },
+  "engines": {
+    "node": "*",
+    "npm": "*"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
+    "@angular/cli": "*",
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
+    "@angular/compiler-cli": "*",
     "@angular/core": "^6.0.0",
     "@angular/forms": "^6.0.0",
     "@angular/http": "^6.0.0",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "body-parser": "^1.18.2",
     "core-js": "^2.5.4",
     "express": "^4.16.3",
     "rxjs": "^6.0.0",
