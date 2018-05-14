@@ -1,6 +1,7 @@
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser');
-const app = express()
+const app = express();
+const con = require('./db/database.connection');
 let productsList = require('./products/products');
 
 app.all("/*", function(req, res, next){
@@ -22,36 +23,54 @@ app.get('/', function (req, res) {
   res.send('Simpson\'s API. Please hit the correct API to get the information.')
 })
 
+app.post('/test', function (req, res) {
+	var data = "";
+	con.query('SELECT * FROM users',function(err,rows){
+		if(err) throw err;
+		res.send(rows);
+	});
+})
+
 app.post('/allproducts', function (req, res) {
-    res.json(productsList);
+    con.query('SELECT * FROM products',function(err,rows){
+      if(err) throw err;
+      res.send(rows);
+    });
 })
 
 app.post('/guitars', function (req, res) {
-    let filteredProducts = [];
-    productsList.forEach(product => {
-        if (product.type === 'acoustic' || product.type === 'electric') {
-            filteredProducts.push(product);
-        }
+    con.query('SELECT * FROM products WHERE type = "guitars"',function(err,rows){
+      if(err) throw err;
+      res.send(rows);
     });
-    res.json(filteredProducts);
 })
 
 app.post('/straps', function (req, res) {
-  let filteredProducts = [];
-  productsList.forEach(product => {
-      if (product.type === 'straps') {
-          filteredProducts.push(product);
-      }
+  con.query('SELECT * FROM products WHERE type = "straps"',function(err,rows){
+    if(err) throw err;
+    res.send(rows);
   });
-  res.json(filteredProducts);
 })
 
 app.post('/picks', function (req, res) {
-  let filteredProducts = [];
-  productsList.forEach(product => {
-      if (product.type === 'pick') {
-          filteredProducts.push(product);
-      }
+  con.query('SELECT * FROM products WHERE type = "picks"',function(err,rows){
+    if(err) throw err;
+    res.send(rows);
   });
-  res.json(filteredProducts);
-})
+});
+
+app.post('/updatecart', function (req, res) {
+    // NEED TO WORK ON IT
+});
+
+app.post('/savepurchasedata', function (req, res) {
+  if(req.body.username === null) {
+    req.body.username = 'admin';
+    req.body.purchaseDetails = 'Admin purchased items.';
+  }
+  sql = "INSERT INTO purchase_details (username, products) VALUES (?, ?)";
+  con.query(sql, [req.body.username, req.body.purchaseDetails],function(err,rows){
+    if(err) throw err;
+    res.send(rows);
+  });
+});

@@ -1,6 +1,6 @@
 <div class="content">
     <div class="cart-holder">
-        <p><button> Cart </button></p>
+        <p><button routerLink="/cart"> Cart ({{cartService.cartItems.length}})</button></p>
     </div>
 
     <div class="sub-header">
@@ -20,7 +20,7 @@
             <p><strong>Price: </strong> {{product.price}}</p>
             <p><strong>Number of pieces available: </strong> {{product.count}}</p>
             <div>
-                <button>Add to cart</button>
+                <button (click)="addToCart(product)">Add to cart</button>
             </div>
             <hr>
         </div>

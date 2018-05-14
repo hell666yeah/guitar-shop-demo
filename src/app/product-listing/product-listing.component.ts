@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-product-listing',
@@ -9,9 +10,9 @@ import { Http, Response } from '@angular/http';
 export class ProductListingComponent implements OnInit {
   public productsList: Array<any>;
   public filteredProductsList: Array<any>;
-  public filters: Array<string> = ['guitars', 'acoustic', 'electric', 'straps', 'pick'];
+  public filters: Array<string> = ['all', 'guitars', 'straps', 'picks'];
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private cartService: CartService) {
       this.http.post('http://127.0.0.1:3000/allproducts', {}).subscribe(data => {
         this.productsList = data.json();
         this.filteredProductsList = this.productsList;
@@ -23,8 +24,7 @@ export class ProductListingComponent implements OnInit {
 
   public filterChanged(filter) {
       let filteredProducts = [];
-      console.log(filter, 'filter');
-      if (filter === 'guitars') {
+      if (filter === 'all') {
           this.filteredProductsList = this.productsList;
       } else {
         this.productsList.forEach(product => {
@@ -37,4 +37,14 @@ export class ProductListingComponent implements OnInit {
       }
   }
 
-}
+  addToCart(product) {
+      let username = localStorage.getItem('username');
+      console.log(username, 'username');
+      this.cartService.cartItems.push(product);
+      let status = this.cartService.updateCart(username);
+      if(status) {
+        alert('Item has been added to cart');
+      } else {
+        alert('Unable to add product to cart.');
+      }
+  }

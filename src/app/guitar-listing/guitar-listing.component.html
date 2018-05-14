@@ -1,6 +1,6 @@
 <div class="content">
     <div class="cart-holder">
-        <p><button> Cart </button></p>
+        <p><button> Cart ({{cartService.cartItems.length}})</button></p>
     </div>
 
     <div class="sub-header">
@@ -14,13 +14,13 @@
     <div class="products-main-container">
         <div *ngFor="let product of filteredProductsList" class="single-product-holder">
             <p><strong>Name: </strong> {{product.name}}</p>
-            <p><strong>Type: </strong> {{product.type}}</p>
+            <p><strong>Type: </strong> {{product.subType}} Guitar</p>
             <p><strong>Brand: </strong> {{product.brand}}</p>
             <p><strong>Number of Strings: </strong> {{product.strings}}</p>
             <p><strong>Price: </strong> {{product.price}}</p>
             <p><strong>Number of pieces available: </strong> {{product.count}}</p>
             <div>
-                <button>Add to cart</button>
+                <button (click)="addToCart(product)">Add to cart</button>
             </div>
             <hr>
         </div>

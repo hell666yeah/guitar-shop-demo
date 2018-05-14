@@ -1,0 +1,17 @@
+<div class="cart-content-holder" *ngIf="shoppingSuccess === false">
+    <div class="header">
+      <h1>Cart Details</h1>
+    </div>
+    <div class="cart-items">
+        <div *ngFor="let item of cartService.cartItems" class="single-item">
+            {{item.name}}
+        </div>
+    </div>
+    <div class="btn-holder">
+        <button (click)="purchase()">Purchase</button>
+    </div>
+</div>
+
+<div class="cart-content-holder" *ngIf="shoppingSuccess === true">
+    <h2>Thank you for shopping with us. Please come back again.</h2>
+</div>

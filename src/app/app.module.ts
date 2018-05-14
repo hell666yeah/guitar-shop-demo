@@ -9,6 +9,9 @@ import { StrapsListingComponent } from './straps-listing/straps-listing.componen
 import { PicksListingComponent } from './picks-listing/picks-listing.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { GuitarListingComponent } from './guitar-listing/guitar-listing.component';
+import { CartService } from './services/cart/cart.service';
+import { AuthenticateService } from './services/authenticate/authenticate.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { GuitarListingComponent } from './guitar-listing/guitar-listing.componen
     StrapsListingComponent,
     PicksListingComponent,
     NavigationComponent,
-    GuitarListingComponent
+    GuitarListingComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import { GuitarListingComponent } from './guitar-listing/guitar-listing.componen
     AppRoutingModule,
     HttpModule
   ],
-  providers: [],
+  providers: [CartService, AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
