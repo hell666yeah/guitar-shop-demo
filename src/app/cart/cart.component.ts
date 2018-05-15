@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { CartService } from '../services/cart/cart.service';
+import { AuthenticateService } from '../services/authenticate/authenticate.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +11,7 @@ import { CartService } from '../services/cart/cart.service';
 export class CartComponent implements OnInit {
   public shoppingSuccess = false;
 
-  constructor(private http: Http, private cartService: CartService) {
+  constructor(private http: Http, private cartService: CartService, private authenticateService: AuthenticateService) {
 
   }
 
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit {
   }
 
   public purchase() {
-      this.cartService.savePurchaseData(localStorage.getItem('username'));
+      console.log(this.authenticateService.username, 'this.authenticateService.username');
+      this.cartService.savePurchaseData(this.authenticateService.username);
       this.shoppingSuccess = true;
   }
 

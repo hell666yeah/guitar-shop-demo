@@ -9,7 +9,6 @@ export class AuthenticateService {
 
   public username = 'admin';
   public password = 'admin';
-  constructor() {
-      localStorage.setItem('username', this.username);
-  }
+
+  constructor() {}
 }

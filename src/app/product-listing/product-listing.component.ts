@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { CartService } from '../services/cart/cart.service';
+import { AuthenticateService } from '../services/authenticate/authenticate.service';
 
 @Component({
   selector: 'app-product-listing',
@@ -12,7 +13,7 @@ export class ProductListingComponent implements OnInit {
   public filteredProductsList: Array<any>;
   public filters: Array<string> = ['all', 'guitars', 'straps', 'picks'];
 
-  constructor(private http: Http, private cartService: CartService) {
+  constructor(private http: Http, private cartService: CartService, private authenticateService: AuthenticateService) {
       this.http.post('http://127.0.0.1:3000/allproducts', {}).subscribe(data => {
         this.productsList = data.json();
         this.filteredProductsList = this.productsList;
@@ -38,13 +39,8 @@ export class ProductListingComponent implements OnInit {
   }
 
   addToCart(product) {
-      let username = localStorage.getItem('username');
-      console.log(username, 'username');
       this.cartService.cartItems.push(product);
-      let status = this.cartService.updateCart(username);
-      if(status) {
-        alert('Item has been added to cart');
-      } else {
-        alert('Unable to add product to cart.');
-      }
+      // this.cartService.updateCart(username);
+      alert('Item has been added to cart');
   }
+}

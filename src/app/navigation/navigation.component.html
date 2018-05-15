@@ -4,5 +4,6 @@
       <li><a routerLink="/guitars" routerLinkActive="active">Guitars</a></li>
       <li><a routerLink="/straps" routerLinkActive="active">Straps</a></li>
       <li><a routerLink="/picks" routerLinkActive="active">Picks</a></li>
+      <li *ngIf="isAdmin"><a routerLink="/admin/addproduct" routerLinkActive="active">Add Product(enabled for admin only)</a></li>
     </ul>
 </div>

@@ -13,7 +13,7 @@ export class CartService {
   }
 
   public updateCart(username) {
-    let params = {};
+    let params;
     params.product = this.cartItems;
     params.username = username;
     this.http.post('http://127.0.0.1:3000/updatecart', params).subscribe(data => {
@@ -23,17 +23,13 @@ export class CartService {
     });
   }
 
-  public checkout() {
-      let action = this.savePurchaseData();
+  public checkout(username) {
+      let action = this.savePurchaseData(username);
       return action;
   }
 
   public savePurchaseData(username = 'admin') {
-    let params = {};
-    params.username = username;
-    params.purchaseDetails = username + ' purchased items.';
-
-    this.http.post('http://127.0.0.1:3000/savepurchasedata', params).subscribe(data => {
+    this.http.post('http://127.0.0.1:3000/savepurchasedata', {username: username, itemsLength: this.cartItems.length}).subscribe(data => {
         this.cartItems = [];
        return true;
     }, error => {

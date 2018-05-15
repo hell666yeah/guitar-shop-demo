@@ -6,6 +6,7 @@ import { StrapsListingComponent } from './straps-listing/straps-listing.componen
 import { PicksListingComponent } from './picks-listing/picks-listing.component';
 import { GuitarListingComponent } from './guitar-listing/guitar-listing.component';
 import { CartComponent } from './cart/cart.component';
+import { CreateProductComponent } from './admin/create-product/create-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'straps', component: StrapsListingComponent },
   { path: 'picks', component: PicksListingComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'admin/addproduct', component: CreateProductComponent },
 ];
 
 @NgModule({

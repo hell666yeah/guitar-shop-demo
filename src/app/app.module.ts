@@ -10,8 +10,10 @@ import { PicksListingComponent } from './picks-listing/picks-listing.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { GuitarListingComponent } from './guitar-listing/guitar-listing.component';
 import { CartService } from './services/cart/cart.service';
+import { AdminService } from './services/admin/admin.service';
 import { AuthenticateService } from './services/authenticate/authenticate.service';
 import { CartComponent } from './cart/cart.component';
+import { CreateProductComponent } from './admin/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { CartComponent } from './cart/cart.component';
     PicksListingComponent,
     NavigationComponent,
     GuitarListingComponent,
-    CartComponent
+    CartComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { CartComponent } from './cart/cart.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [CartService, AuthenticateService],
+  providers: [CartService, AuthenticateService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
