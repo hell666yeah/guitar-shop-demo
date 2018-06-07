@@ -12,7 +12,8 @@ export class GuitarListingComponent implements OnInit {
   public filteredProductsList: Array<any>;
   public filters: Array<string> = ['guitars', 'acoustic', 'electric'];
 
-  constructor(private http: Http, private cartService: CartService) {this.http.post('http://127.0.0.1:3000/guitars', {}).subscribe(data => {
+  constructor(private http: Http, private cartService: CartService) {
+    this.http.post('http://127.0.0.1:3000/guitars', {}).subscribe(data => {
       this.productsList = data.json();
       this.filteredProductsList = this.productsList;
     });

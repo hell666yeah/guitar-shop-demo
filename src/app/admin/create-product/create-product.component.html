@@ -1,3 +1,58 @@
-<p>
-  create-product works!
-</p>
+<div class="content-holder" *ngIf="productAdded === false">
+    <div class="header">
+        <h1>Add a product</h1>
+    </div>
+    <div class="form-holder">
+        <form [formGroup]="form" (ngSubmit)="addProduct(form.value)">
+          <div>
+              <label>Type: </label><br>
+              <select formControlName="type">
+                <option>guitars</option>
+                <option>picks</option>
+                <option>straps</option>
+              </select>
+          </div>
+          <div>
+              <label>Sub Type: </label><br>
+              <select formControlName="subType">
+                <option>electric</option>
+                <option>acoustic</option>
+                <option>small</option>
+                <option>large</option>
+                <option>plastic</option>
+                <option>wooden</option>
+              </select>
+          </div>
+          <div>
+              <label>Name: </label><br>
+              <input type="text" name="name" formControlName="name"/>
+          </div>
+          <div>
+              <label>Brand: </label><br>
+              <input type="text" name="brand" formControlName="brand"/>
+          </div>
+          <div>
+              <label>Count: </label><br>
+              <input type="text" name="count" formControlName="count"/>
+          </div>
+          <div>
+              <label>Strings: </label><br>
+              <select formControlName="strings">
+                <option>none</option>
+                <option>6</option>
+                <option>12</option>
+              </select>
+          </div>
+          <div>
+              <label>Price: </label><br>
+              <input type="text" name="price" formControlName="price"/>
+          </div>
+          <div>
+              <input type="submit" value="Add Product" [disabled]="!form.valid">
+          </div>
+        </form>
+    </div>
+</div>
+<div class="success-message" *ngIf="productAdded">
+    <h2>Product Added Successfully</h2>
+</div>

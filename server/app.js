@@ -63,13 +63,19 @@ app.post('/updatecart', function (req, res) {
     // NEED TO WORK ON IT
 });
 
+app.post('/addproduct', function (req, res) {
+    let sql = "INSERT INTO products (type, subType, count, name, brand, strings, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    con.query(sql, [req.body.type, req.body.subType, req.body.count, req.body.name, req.body.brand, req.body.strings, req.body.price ],function(err,rows){
+      if(err) throw err;
+      res.send({success: 'true'});
+    });
+});
+
+
 app.post('/savepurchasedata', function (req, res) {
-  if(req.body.username === null) {
-    req.body.username = 'admin';
-    req.body.purchaseDetails = 'Admin purchased items.';
-  }
-  sql = "INSERT INTO purchase_details (username, products) VALUES (?, ?)";
-  con.query(sql, [req.body.username, req.body.purchaseDetails],function(err,rows){
+  let message = req.body.username + ' purchased '+ req.body.itemsLength +' items.'
+  let sql = "INSERT INTO purchase_details (username, products) VALUES (?, ?)";
+  con.query(sql, [req.body.username, message],function(err,rows){
     if(err) throw err;
     res.send(rows);
   });

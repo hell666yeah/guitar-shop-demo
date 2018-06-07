@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductListingComponent } from './product-listing/product-listing.component';
@@ -30,7 +31,9 @@ import { CreateProductComponent } from './admin/create-product/create-product.co
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CartService, AuthenticateService, AdminService],
   bootstrap: [AppComponent]
